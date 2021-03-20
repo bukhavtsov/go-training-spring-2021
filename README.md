@@ -4,5 +4,5 @@
 
 ### Lessons
 
-- [Lesson 1](lesson_1/README.md)
-- [Lesson 2](lesson_1/README.md)
+- [Lesson 1](lesson_1)
+- [Lesson 2](lesson_2)
