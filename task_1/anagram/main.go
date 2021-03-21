@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 /*
   Description: An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia https://en.wikipedia.org/wiki/Anagram).
   Note: anagrams are case insensitive
@@ -12,9 +17,21 @@ package main
 */
 
 func isAnagram(test, original string) bool {
-	panic("Implement me!")
+	for _, testSymbol := range strings.ToLower(test) {
+		check := false
+		for _, ordinalSymbol := range strings.ToLower(original) {
+			if testSymbol == ordinalSymbol {
+				check = true
+			}
+		}
+		if !check {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
-
+	fmt.Println(isAnagram("foefet", "toffee"))
+	fmt.Println(isAnagram("Buckethead", "DeathCubeK"))
 }
