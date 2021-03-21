@@ -11,7 +11,7 @@ package main
 	How to convert character to ASCII and back: https://www.socketloop.com/tutorials/golang-how-to-convert-character-to-ascii-and-back
 */
 
-func cake(x, y int) string {
+func cake(x int, y string) string {
 	panic("Implement me!")
 }
 
