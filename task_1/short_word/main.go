@@ -1,14 +1,20 @@
 package main
 
-/*
-	given a string of words, return the length of the shortest word(s).
-	String will never be empty and you do not need to account for different data types.
-*/
+import (
+	"strings"
+)
 
 func findShort(s string) int {
-	panic("Implement me!")
+	var array []string = strings.Split(s, " ")
+	min := len(array[0])
+	for _, value := range array {
+		if min > len(value){
+			min = len(value)
+		}
+	}
+	return min
 }
 
 func main() {
-
+	findShort("Dima d asd asdasda")
 }

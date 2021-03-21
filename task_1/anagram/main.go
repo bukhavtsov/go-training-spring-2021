@@ -1,20 +1,22 @@
 package main
 
-/*
-  Description: An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia https://en.wikipedia.org/wiki/Anagram).
-  Note: anagrams are case insensitive
-
-  Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
-
-  Examples:
-  "foefet" is an anagram of "toffee"
-  "Buckethead" is an anagram of "DeathCubeK"
-*/
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 func isAnagram(test, original string) bool {
-	panic("Implement me!")
+	if len(test) != len(original) || test == original{
+		return false
+	}
+	testArray := strings.Split(strings.ToLower(test), "")
+	originalArray := strings.Split(strings.ToLower(original), "")
+	sort.Strings(testArray)
+	sort.Strings(originalArray)
+	return fmt.Sprint(testArray) == fmt.Sprint(originalArray)
 }
 
-func main() {
-
+func main(){
+	isAnagram("Imad", "Dima")
 }

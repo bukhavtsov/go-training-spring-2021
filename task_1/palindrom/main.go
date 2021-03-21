@@ -1,23 +1,22 @@
 package main
 
-/*
- Description: A palindrome is a word, phrase, number, or other
- sequence of characters which reads the same backward or forward.
-  This includes capital letters, punctuation, and word dividers.
-
- Implement a function that checks if something is a palindrome.
-
- Examples:
- isPalindrome("anna")   ==> true
- isPalindrome("walter") ==> false
- isPalindrome("12321")    ==> true
- isPalindrome("123456")   ==> false
-*/
+import (
+	"strings"
+)
 
 func isPalindrome(str string) bool {
-	panic("Implement me!")
+	if str == "" {
+		return false
+	}
+	array := strings.Split(str, "")
+	for i, lastIndex := 0, len(array) - 1; i < len(array); i, lastIndex = i + 1, lastIndex - 1{
+		if array[i] != array[lastIndex]{
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
-
+	isPalindrome("12321")
 }

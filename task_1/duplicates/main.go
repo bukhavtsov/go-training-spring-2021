@@ -1,19 +1,40 @@
 package main
 
-/*
- You are given an array of n+1 integers 1 through n. In addition there is a single duplicate integer.
+import (
+	"fmt"
+	"sort"
+)
 
- The array is unsorted.
-
- An example valid array would be [3, 2, 5, 1, 3, 4]. It has the integers 1 through 5 and 3 is duplicated. [1, 2, 4, 5, 5] would not be valid as it is missing 3.
-
- You should return the duplicate value as a single integer.
-*/
+func isValidArray(numbers []int) bool{
+	sort.Ints(numbers)
+	for i := 0; i < len(numbers); i++{
+		index := sort.SearchInts(numbers, i)
+		if index == len(numbers) || i != numbers[index]{
+			return false
+		}
+	}
+	return true
+}
 
 func getDuplicate(numbers []int) int {
-	panic("Implement me!")
+	if !isValidArray(numbers){
+		return -1
+	}
+	var number int = 0
+	for i := 0; i < len(numbers); i++{
+		for j := 1 ; j < len(numbers); j++{
+			if numbers[i] == numbers[j] {
+				number = numbers[i]
+				return number
+			}
+		}
+	}
+	return number
 }
 
 func main() {
-
+	array := []int{
+		3, 2, 5, 1, 3, 4,
+	}
+	fmt.Println(getDuplicate(array))
 }
