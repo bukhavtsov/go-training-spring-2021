@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/big"
 )
 
 /*
@@ -21,12 +20,31 @@ import (
 	isPrime(-1) -> false
 */
 
-func isPrime(n int) bool {
-	return big.NewInt(int64(n)).ProbablyPrime(0)
+func isPrime(n int) (flag bool) {
+	if n == 2 {
+		flag = true
+	} else if n%2 == 0 || n == 1 || n <= 1 {
+		flag = false
+	} else {
+		i := 3
+		flag = true
+		for i*i <= n && flag {
+			if n%i == 0 {
+				flag = false
+				break
+			} else {
+				i = i + 2
+			}
+		}
+	}
+	return
 }
 
 func main() {
 	fmt.Println(isPrime(1))
 	fmt.Println(isPrime(2))
 	fmt.Println(isPrime(-1))
+	fmt.Println(isPrime(401))
+	fmt.Println(isPrime(907))
+	fmt.Println(isPrime(908))
 }

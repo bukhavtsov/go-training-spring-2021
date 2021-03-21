@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  You are given an array of n+1 integers 1 through n. In addition there is a single duplicate integer.
 
@@ -11,9 +13,16 @@ package main
 */
 
 func getDuplicate(numbers []int) int {
-	panic("Implement me!")
+	for _, num1 := range numbers {
+		for _, num2 := range numbers {
+			if num1 == num2 {
+				return num1
+			}
+		}
+	}
+	return 0
 }
 
 func main() {
-
+	fmt.Println(getDuplicate([]int{3, 2, 5, 1, 3, 4}))
 }
