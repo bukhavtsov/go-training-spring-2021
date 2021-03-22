@@ -15,10 +15,19 @@ import "fmt"
 
 func cake(x int, y string) string {
 	var total int
-	for _, char := range y {
-		total = total + int(char)
+	for i, char := range y {
+		if i%2 == 0 {
+			total = total + int(char)
+		} else {
+			for i, charAlphabet := range "abcdefghijklmnopqrstunwxyz" {
+				if char == charAlphabet {
+					total = total + i + 1
+					break
+				}
+			}
+		}
 	}
-	if int(float64(x)*0.7) <= total {
+	if int(float64(x)*0.7) < total {
 		return "Fire!"
 	} else {
 		return "That was close!"
@@ -26,5 +35,5 @@ func cake(x int, y string) string {
 }
 
 func main() {
-	fmt.Println(cake(800, "Alex"))
+	fmt.Println(cake(800, "alexander"))
 }
