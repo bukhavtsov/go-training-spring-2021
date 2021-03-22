@@ -20,24 +20,22 @@ import (
 	isPrime(-1) -> false
 */
 
-func isPrime(n int) (flag bool) {
+func isPrime(n int) bool {
 	if n == 2 {
-		flag = true
+		return true
 	} else if n%2 == 0 || n == 1 || n <= 1 {
-		flag = false
+		return false
 	} else {
 		i := 3
-		flag = true
-		for i*i <= n && flag {
+		for i*i <= n {
 			if n%i == 0 {
-				flag = false
-				break
+				return false
 			} else {
 				i = i + 2
 			}
 		}
+		return true
 	}
-	return
 }
 
 func main() {

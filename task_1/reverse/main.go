@@ -7,11 +7,12 @@ import "fmt"
  * Example: "world"  =>  "dlrow"
  */
 
-func reverse(word string) (result string) {
+func reverse(word string) string {
+	var result string
 	for _, char := range word {
 		result = string(char) + result
 	}
-	return
+	return result
 }
 
 func main() {
