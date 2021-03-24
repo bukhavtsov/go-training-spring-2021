@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"sort"
+)
+
 /*
  You are given an array of n+1 integers 1 through n. In addition there is a single duplicate integer.
 
@@ -11,9 +16,16 @@ package main
 */
 
 func getDuplicate(numbers []int) int {
-	panic("Implement me!")
+	sort.Ints(numbers)
+	var duplicated int
+	for i := 1; i < len(numbers); i++ {
+		if numbers[i] == numbers[i-1] {
+			duplicated = numbers[i]
+		}
+	}
+	return duplicated
 }
 
 func main() {
-
+	fmt.Println(getDuplicate([]int{3, 2, 5, 1, 2, 4}))
 }
