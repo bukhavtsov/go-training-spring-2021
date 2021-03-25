@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 /*
 	It's your Birthday. Your colleagues buy you a cake. The numbers of candles on the cake is provided (x). Please note this is not reality, and your age can be anywhere up to 1,000. Yes, you would look a mess.
 	As a surprise, your colleagues have arranged for your friend to hide inside the cake and burst out. They pretend this is for your benefit, but likely it is just because they want to see you fall over covered in cake. Sounds fun!
@@ -10,11 +15,28 @@ package main
 
 	How to convert character to ASCII and back: https://www.socketloop.com/tutorials/golang-how-to-convert-character-to-ascii-and-back
 */
-
+func main() {
+	fmt.Println(cake(25, "abc"))
+}
 func cake(x int, y string) string {
-	panic("Implement me!")
+	const alphabet = "abcdefghijklmnopqrstunwxyz"
+	var total int
+
+	for i, v := range strings.ToLower(y) {
+		fmt.Println(string(v))
+		if i%2 == 0 {
+			total = total + int(v)
+		} else {
+			total = total + strings.IndexAny(alphabet, string(v)) + 1
+		}
+	}
+	return isFire(total, x)
 }
 
-func main() {
-
+func isFire(total, x int) string {
+	result := "That was close!"
+	if (x*70)/100 < total {
+		result = "Fire!"
+	}
+	return result
 }
