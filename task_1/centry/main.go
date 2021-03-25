@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 	Description: The first century spans from the year 1 up to and including the year 100,
 	The second - from the year 101 up to and including the year 200, etc.
@@ -14,9 +16,13 @@ package main
 */
 
 func century(year int) int {
-	panic("Implement me!")
+	century := year
+	if year%100 != 0 {
+		century = century + 100
+	}
+	return century / 100
 }
 
 func main() {
-
+	fmt.Println(century(2021))
 }
