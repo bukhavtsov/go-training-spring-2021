@@ -24,7 +24,7 @@ Methods:
 - `IsFull` - Check if the queue is full
 - `Peek` - Get the value of the front of the queue without removing it
 
-### *3. Add method `Sort` into each Data Structure
+### *3. Add method `Sort` into each Data Structure(Optional)
 
 It can be any sorting algorithm (including bubble sort)
 
