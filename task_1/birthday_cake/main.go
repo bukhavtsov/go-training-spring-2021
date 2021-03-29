@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 /*
 	It's your Birthday. Your colleagues buy you a cake. The numbers of candles on the cake is provided (x). Please note this is not reality, and your age can be anywhere up to 1,000. Yes, you would look a mess.
 	As a surprise, your colleagues have arranged for your friend to hide inside the cake and burst out. They pretend this is for your benefit, but likely it is just because they want to see you fall over covered in cake. Sounds fun!
@@ -12,9 +16,26 @@ package main
 */
 
 func cake(x int, y string) string {
-	panic("Implement me!")
+	var total int32
+	for i, char := range y {
+		if i%2 == 0 {
+			total = total + char
+		} else {
+			for i, charAlphabet := range "abcdefghijklmnopqrstunwxyz" {
+				if char == charAlphabet {
+					total = total + int32(i) + 1
+					break
+				}
+			}
+		}
+	}
+	if int32(float64(x)*0.7) < total {
+		return "Fire!"
+	} else {
+		return "That was close!"
+	}
 }
 
 func main() {
-
+	fmt.Println(cake(800, "alexander"))
 }

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  Description: A palindrome is a word, phrase, number, or other
  sequence of characters which reads the same backward or forward.
@@ -15,9 +17,17 @@ package main
 */
 
 func isPalindrome(str string) bool {
-	panic("Implement me!")
+	var reverse string
+	for _, char := range str {
+		reverse = string(char) + reverse
+	}
+	return reverse == str
 }
 
 func main() {
+	fmt.Println(isPalindrome("anna"))
+	fmt.Println(isPalindrome("walter"))
+	fmt.Println(isPalindrome("12321"))
+	fmt.Println(isPalindrome("123456"))
 
 }

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 /*
 	Define a function that takes one integer argument and returns logical value true or false depending on if the integer is a prime.
 
@@ -17,8 +21,28 @@ package main
 */
 
 func isPrime(n int) bool {
-	panic("Implement me!")
+	if n == 2 {
+		return true
+	} else if n%2 == 0 || n == 1 || n <= 1 {
+		return false
+	} else {
+		i := 3
+		for i*i <= n {
+			if n%i == 0 {
+				return false
+			} else {
+				i = i + 2
+			}
+		}
+		return true
+	}
 }
 
 func main() {
+	fmt.Println(isPrime(1))
+	fmt.Println(isPrime(2))
+	fmt.Println(isPrime(-1))
+	fmt.Println(isPrime(401))
+	fmt.Println(isPrime(907))
+	fmt.Println(isPrime(908))
 }
