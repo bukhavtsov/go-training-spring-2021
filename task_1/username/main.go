@@ -14,7 +14,7 @@ import (
 */
 
 func isUsername(username string) bool {
-	matched, err := regexp.MatchString("^[0-9a-z_]{4,16}$", username)
+	matched, err := regexp.MatchString("^([0-9a-z]|[0-9a-z]+_?[0-9a-z]+){4,16}$", username)
 	if err != nil {
 		return false
 	}

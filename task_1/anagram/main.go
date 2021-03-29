@@ -17,6 +17,9 @@ import (
 */
 
 func isAnagram(test, original string) bool {
+	if len(test) != len(original) {
+		return false
+	}
 	for _, testSymbol := range strings.ToLower(test) {
 		check := false
 		for _, ordinalSymbol := range strings.ToLower(original) {

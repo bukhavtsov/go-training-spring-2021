@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 	It's your Birthday. Your colleagues buy you a cake. The numbers of candles on the cake is provided (x). Please note this is not reality, and your age can be anywhere up to 1,000. Yes, you would look a mess.
@@ -14,20 +16,20 @@ import "fmt"
 */
 
 func cake(x int, y string) string {
-	var total int
+	var total int32
 	for i, char := range y {
 		if i%2 == 0 {
-			total = total + int(char)
+			total = total + char
 		} else {
 			for i, charAlphabet := range "abcdefghijklmnopqrstunwxyz" {
 				if char == charAlphabet {
-					total = total + i + 1
+					total = total + int32(i) + 1
 					break
 				}
 			}
 		}
 	}
-	if int(float64(x)*0.7) < total {
+	if int32(float64(x)*0.7) < total {
 		return "Fire!"
 	} else {
 		return "That was close!"

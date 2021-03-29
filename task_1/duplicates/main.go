@@ -14,9 +14,13 @@ import "fmt"
 
 func getDuplicate(numbers []int) int {
 	for _, num1 := range numbers {
+		check := false
 		for _, num2 := range numbers {
-			if num1 == num2 {
+			flag := num1 == num2
+			if flag && check {
 				return num1
+			} else if flag {
+				check = true
 			}
 		}
 	}
@@ -25,4 +29,5 @@ func getDuplicate(numbers []int) int {
 
 func main() {
 	fmt.Println(getDuplicate([]int{3, 2, 5, 1, 3, 4}))
+	fmt.Println(getDuplicate([]int{1, 2, 4, 5, 5}))
 }
