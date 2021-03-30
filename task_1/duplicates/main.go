@@ -18,12 +18,10 @@ import (
 func getDuplicate(numbers []int) int {
 	sort.Ints(numbers)
 	var duplicate int
-	i := 1
-	for i < len(numbers) {
+	for i := 1; i < len(numbers); i++ {
 		if numbers[i] == numbers[i-1] {
 			duplicate = numbers[i]
 		}
-		i++
 	}
 	return duplicate
 }

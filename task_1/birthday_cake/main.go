@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -24,7 +25,8 @@ func cake(x int, y string) string {
 
 	for i, v := range strings.ToLower(y) {
 		if i%2 == 0 {
-			total = total + int(v)
+			number, _ := strconv.Atoi(string(v))
+			total = total + number
 		} else {
 			total = total + strings.IndexAny(alphabet, string(v)) + 1
 		}
