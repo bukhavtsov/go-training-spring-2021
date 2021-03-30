@@ -14,7 +14,5 @@ func removeChar(word string) string {
 }
 
 func main() {
-	word := "JustDeleteSymbol"
-	word = removeChar(word)
-	fmt.Println(word)
+	fmt.Println(removeChar("Implement me!"))
 }
