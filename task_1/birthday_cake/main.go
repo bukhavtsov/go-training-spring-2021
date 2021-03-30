@@ -23,7 +23,6 @@ func cake(x int, y string) string {
 	var total int
 
 	for i, v := range strings.ToLower(y) {
-		fmt.Println(string(v))
 		if i%2 == 0 {
 			total = total + int(v)
 		} else {
