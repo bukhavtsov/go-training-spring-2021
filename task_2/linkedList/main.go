@@ -2,21 +2,25 @@ package main
 
 import "fmt"
 
+//Node this is a LinkedList element.
 type Node struct {
 	next *Node
 	key  interface{}
 }
 
+//List this is Singly LinkedList.
 type List struct {
 	head *Node
 	tail *Node
 	len  int
 }
 
+//isEmpty this function determines whether the LinkedList is empty.
 func (L *List) isEmpty() bool {
 	return L.head == nil
 }
 
+//Insert − Adds an element at the beginning of the list.
 func (L *List) Insert(key interface{}) {
 	list := &Node{
 		next: L.head,
@@ -31,6 +35,7 @@ func (L *List) Insert(key interface{}) {
 	L.len++
 }
 
+//Display − Displays the complete list.
 func (L *List) Display() {
 	list := L.head
 	for list != nil {
@@ -39,6 +44,8 @@ func (L *List) Display() {
 	}
 	fmt.Println()
 }
+
+//Deletion − Deletes an element at the beginning of the list.
 func (L *List) Deletion() {
 	if L.isEmpty() {
 		fmt.Println("List is empty")
@@ -48,6 +55,7 @@ func (L *List) Deletion() {
 	L.len--
 }
 
+//Search − Searches an element using the id.
 func (L *List) Search(id int) interface{} {
 	if id >= L.len || id < 0 {
 		return nil
@@ -59,6 +67,7 @@ func (L *List) Search(id int) interface{} {
 	return element.key
 }
 
+//Delete − Deletes an element using the id.
 func (L *List) Delete(id int) {
 	if L.isEmpty() {
 		fmt.Println("List is empty")

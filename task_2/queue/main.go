@@ -2,10 +2,12 @@ package main
 
 import "fmt"
 
+//Node this is a Queue element.
 type Node struct {
 	value interface{}
 }
 
+//Queue is a data structure that, like a stack, has restrictions on adding and removing elements.
 type Queue struct {
 	nodes []*Node
 	size  int
@@ -14,6 +16,7 @@ type Queue struct {
 	count int
 }
 
+//NewQueue - Creates a new queue
 func NewQueue(size int) *Queue {
 	return &Queue{
 		nodes: make([]*Node, size),
@@ -21,6 +24,7 @@ func NewQueue(size int) *Queue {
 	}
 }
 
+//Enqueue - Add an element to the end of the queue.
 func (Q *Queue) Enqueue(n interface{}) {
 	if Q.head == Q.tail && Q.count > 0 {
 		nodes := make([]*Node, len(Q.nodes)+Q.size)
@@ -35,8 +39,10 @@ func (Q *Queue) Enqueue(n interface{}) {
 	Q.count++
 }
 
+//Dequeue - Remove an element from the front of the queue.
 func (Q *Queue) Dequeue() interface{} {
-	if Q.count == 0 {
+	if Q.IsEmpty() {
+		fmt.Println("The queue is empty!")
 		return nil
 	}
 	node := Q.nodes[Q.head]
@@ -45,16 +51,20 @@ func (Q *Queue) Dequeue() interface{} {
 	return node.value
 }
 
+//IsEmpty - Check if the queue is empty.
 func (Q *Queue) IsEmpty() bool {
 	return Q.count == 0
 }
 
+//IsFull - Check if the queue is full.
 func (Q *Queue) IsFull() bool {
 	return Q.size <= Q.count
 }
 
+//Peek - Get the value of the front of the queue without removing it.
 func (Q *Queue) Peek() interface{} {
-	if Q.count == 0 {
+	if Q.IsEmpty() {
+		fmt.Println("The queue is empty!")
 		return nil
 	}
 	return Q.nodes[Q.head].value
