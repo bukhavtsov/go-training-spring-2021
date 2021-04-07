@@ -82,7 +82,13 @@ func (q *Queue) Peek() (interface{}, error) {
 }
 
 //Sort - method sorts data.
-func (q *Queue) Sort() {
+func (q *Queue) Sort() error {
+	if q.IsEmpty() {
+		return fmt.Errorf("the queue is empty")
+	}
+	if q.len == 1 {
+		return fmt.Errorf("the queue contains one element")
+	}
 	for i := 0; i < q.len; i++ {
 		element := q.tail
 		for element.next != nil {
@@ -92,4 +98,5 @@ func (q *Queue) Sort() {
 			element = element.next
 		}
 	}
+	return nil
 }

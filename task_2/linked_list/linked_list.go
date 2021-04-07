@@ -103,7 +103,13 @@ func (l *List) Delete(id int) error {
 }
 
 //Sort - method sorts data.
-func (l *List) Sort() {
+func (l *List) Sort() error {
+	if l.IsEmpty() {
+		return fmt.Errorf("linked List is empty")
+	}
+	if l.len == 1 {
+		return fmt.Errorf("linked List contains one element")
+	}
 	for i := 0; i < l.len; i++ {
 		element := l.head
 		for element.next != nil {
@@ -113,4 +119,5 @@ func (l *List) Sort() {
 			element = element.next
 		}
 	}
+	return nil
 }
