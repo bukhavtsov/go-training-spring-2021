@@ -35,6 +35,30 @@ func TestQueue_Enqueue(t *testing.T) {
 		assert.Equal(expected, actual, fmt.Sprintf("%s and %s not equal, but expected:", expected, actual))
 	}
 }
+func TestQueue_Enqueue2(t *testing.T) {
+	assert := assert.New(t)
+	q := NewQueue(6)
+	_ = q.Enqueue("one")
+	err := q.Enqueue(2)
+	expected := fmt.Errorf("wrong type: %v", 2)
+	actual := err
+	assert.Equal(expected, actual, fmt.Sprintf("%v and %v not equal, but expected:", expected, actual))
+
+}
+func TestQueue_Enqueue3(t *testing.T) {
+	assert := assert.New(t)
+	q := NewQueue(5)
+	_ = q.Enqueue("one")
+	_ = q.Enqueue("two")
+	_ = q.Enqueue("three")
+	_ = q.Enqueue("four")
+	_ = q.Enqueue("five")
+	err := q.Enqueue("six")
+	expected := fmt.Errorf("the queue is full")
+	actual := err
+	assert.Equal(expected, actual, fmt.Sprintf("%v and %v not equal, but expected:", expected, actual))
+
+}
 
 func TestQueue_Dequeue(t *testing.T) {
 	assert := assert.New(t)
@@ -56,6 +80,15 @@ func TestQueue_Dequeue(t *testing.T) {
 		actual := element.key
 		assert.Equal(expected, actual, fmt.Sprintf("%s and %s not equal, but expected:", expected, actual))
 	}
+}
+func TestQueue_Dequeue2(t *testing.T) {
+	assert := assert.New(t)
+	q := NewQueue(5)
+	err := q.Dequeue()
+	expected := fmt.Errorf("the queue is empty")
+	actual := err
+	assert.Equal(expected, actual, fmt.Sprintf("%v and %v not equal, but expected:", expected, actual))
+
 }
 
 func TestQueue_IsEmpty(t *testing.T) {
@@ -90,24 +123,32 @@ func TestQueue_Peek(t *testing.T) {
 	actual, _ := q.Peek()
 	assert.Equal("one", actual, fmt.Sprintf("%s and %s not equal, but expected:", "one", actual))
 }
+func TestQueue_Peek2(t *testing.T) {
+	assert := assert.New(t)
+	q := NewQueue(5)
+	_, err := q.Peek()
+	expected := fmt.Errorf("the queue is empty")
+	actual := err
+	assert.Equal(expected, actual, fmt.Sprintf("%v and %v not equal, but expected:", expected, actual))
 
-//func TestList_Sort(t *testing.T) {
-//	assert := assert.New(t)
-//	list := List{}
-//	_ = list.Insert("a")
-//	_ = list.Insert("b")
-//	_ = list.Insert("c")
-//	_ = list.Insert("d")
-//	list.Sort()
-//	expectedList := []string{"a", "b", "c", "d"}
-//	for i := 0; i < list.len; i++ {
-//		expected := expectedList[i]
-//		element := list.head
-//		for j := 0; j < i; j++ {
-//			element = element.next
-//		}
-//		fmt.Println(element.key)
-//		actual := element.key
-//		assert.Equal(expected, actual, fmt.Sprintf("%s and %s not equal, but expected:", expected, actual))
-//	}
-//}
+}
+
+func TestList_Sort(t *testing.T) {
+	assert := assert.New(t)
+	q := NewQueue(6)
+	_ = q.Enqueue("d")
+	_ = q.Enqueue("c")
+	_ = q.Enqueue("a")
+	_ = q.Enqueue("b")
+	q.Sort()
+	expectedList := []string{"a", "b", "c", "d"}
+	for i := 0; i < q.len; i++ {
+		expected := expectedList[i]
+		element := q.tail
+		for j := 0; j < i; j++ {
+			element = element.next
+		}
+		actual := element.key
+		assert.Equal(expected, actual, fmt.Sprintf("%s and %s not equal, but expected:", expected, actual))
+	}
+}

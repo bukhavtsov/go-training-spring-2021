@@ -68,6 +68,9 @@ func (L *List) Deletion() error {
 
 //Search − Searches an element using the id.
 func (L *List) Search(id int) (interface{}, error) {
+	if L.IsEmpty() {
+		return nil, fmt.Errorf("linked List is empty")
+	}
 	if id >= L.len || id < 0 {
 		return nil, fmt.Errorf("incorrect id: %v", id)
 	}
@@ -99,37 +102,15 @@ func (L *List) Delete(id int) error {
 	return nil
 }
 
-//func (n *Node) getValue() string {
-//	switch str := n.key.(type) {
-//	case string:
-//		return str
-//	case float64:
-//		return fmt.Sprintf("%f", str)
-//	case int:
-//		return strconv.Itoa(str)
-//	default:
-//		return fmt.Sprintf("%v", str)
-//	}
-//}
-//
-//func (n *Node) ConvertToStringNodeValue() string {
-//	return fmt.Sprint(n.key)
-//}
-//
-//func (L *List) Sort() {
-//	for i := 0; i < L.len; i++ {
-//		for j := 1; j > L.len-i; j++ {
-//			element := L.head
-//			for k := 0; k < j-1; k++ {
-//				element = element.next
-//			}
-//			//if fmt.Sprint(element.key) > fmt.Sprint(element.next.key) {
-//			if element.getValue() > element.next.getValue() {
-//				//	element, element.next = element.next, element
-//				next := element.next
-//				element.next = element
-//				element = next
-//			}
-//		}
-//	}
-//}
+//Sort - method sorts data.
+func (L *List) Sort() {
+	for i := 0; i < L.len; i++ {
+		element := L.head
+		for element.next != nil {
+			if fmt.Sprint(element.key) > fmt.Sprint(element.next.key) {
+				element.key, element.next.key = element.next.key, element.key
+			}
+			element = element.next
+		}
+	}
+}

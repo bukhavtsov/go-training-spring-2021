@@ -28,6 +28,9 @@ func NewQueue(size int) *Queue {
 
 //Enqueue - Add an element to the end of the queue.
 func (Q *Queue) Enqueue(key interface{}) error {
+	if Q.size == Q.len {
+		return fmt.Errorf("the queue is full")
+	}
 	if !Q.IsEmpty() && reflect.TypeOf(Q.tail.key) != reflect.TypeOf(key) {
 		return fmt.Errorf("wrong type: %v", key)
 	}
@@ -76,4 +79,17 @@ func (Q *Queue) Peek() (interface{}, error) {
 		return nil, fmt.Errorf("the queue is empty")
 	}
 	return Q.head.key, nil
+}
+
+//Sort - method sorts data.
+func (Q *Queue) Sort() {
+	for i := 0; i < Q.len; i++ {
+		element := Q.tail
+		for element.next != nil {
+			if fmt.Sprint(element.key) > fmt.Sprint(element.next.key) {
+				element.key, element.next.key = element.next.key, element.key
+			}
+			element = element.next
+		}
+	}
 }
