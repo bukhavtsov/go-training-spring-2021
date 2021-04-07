@@ -19,35 +19,35 @@ type List struct {
 }
 
 //isEmpty this function determines whether the LinkedList is empty.
-func (L *List) IsEmpty() bool {
-	return L.len == 0
+func (l *List) IsEmpty() bool {
+	return l.len == 0
 }
 
 //Insert − Adds an element at the beginning of the list.
-func (L *List) Insert(key interface{}) error {
-	if !L.IsEmpty() && reflect.TypeOf(L.head.key) != reflect.TypeOf(key) {
+func (l *List) Insert(key interface{}) error {
+	if !l.IsEmpty() && reflect.TypeOf(l.head.key) != reflect.TypeOf(key) {
 		return fmt.Errorf("wrong type: %v", key)
 	}
 	list := &Node{
-		next: L.head,
+		next: l.head,
 		key:  key,
 	}
-	L.head = list
-	element := L.head
+	l.head = list
+	element := l.head
 	for element.next != nil {
 		element = element.next
 	}
-	L.tail = element
-	L.len++
+	l.tail = element
+	l.len++
 	return nil
 }
 
 //Display − Displays the complete list.
-func (L *List) Display() error {
-	if L.IsEmpty() {
+func (l *List) Display() error {
+	if l.IsEmpty() {
 		return fmt.Errorf("linked List is empty")
 	}
-	list := L.head
+	list := l.head
 	for list != nil {
 		fmt.Printf(" --> %v", list.key)
 		list = list.next
@@ -57,24 +57,24 @@ func (L *List) Display() error {
 }
 
 //Deletion − Deletes an element at the beginning of the list.
-func (L *List) Deletion() error {
-	if L.IsEmpty() {
+func (l *List) Deletion() error {
+	if l.IsEmpty() {
 		return fmt.Errorf("linked List is empty")
 	}
-	L.head = L.head.next
-	L.len--
+	l.head = l.head.next
+	l.len--
 	return nil
 }
 
 //Search − Searches an element using the id.
-func (L *List) Search(id int) (interface{}, error) {
-	if L.IsEmpty() {
+func (l *List) Search(id int) (interface{}, error) {
+	if l.IsEmpty() {
 		return nil, fmt.Errorf("linked List is empty")
 	}
-	if id >= L.len || id < 0 {
+	if id >= l.len || id < 0 {
 		return nil, fmt.Errorf("incorrect id: %v", id)
 	}
-	element := L.head
+	element := l.head
 	for i := 0; i < id; i++ {
 		element = element.next
 	}
@@ -82,30 +82,30 @@ func (L *List) Search(id int) (interface{}, error) {
 }
 
 //Delete − Deletes an element using the id.
-func (L *List) Delete(id int) error {
-	if L.IsEmpty() {
+func (l *List) Delete(id int) error {
+	if l.IsEmpty() {
 		return fmt.Errorf("linked List is empty")
 	}
-	if id >= L.len || id < 0 {
+	if id >= l.len || id < 0 {
 		return fmt.Errorf("incorrect id: %v", id)
 	}
 	if id == 0 {
-		_ = L.Deletion()
+		_ = l.Deletion()
 	} else {
-		element := L.head
+		element := l.head
 		for i := 0; i < id-1; i++ {
 			element = element.next
 		}
 		element.next = element.next.next
 	}
-	L.len--
+	l.len--
 	return nil
 }
 
 //Sort - method sorts data.
-func (L *List) Sort() {
-	for i := 0; i < L.len; i++ {
-		element := L.head
+func (l *List) Sort() {
+	for i := 0; i < l.len; i++ {
+		element := l.head
 		for element.next != nil {
 			if fmt.Sprint(element.key) > fmt.Sprint(element.next.key) {
 				element.key, element.next.key = element.next.key, element.key

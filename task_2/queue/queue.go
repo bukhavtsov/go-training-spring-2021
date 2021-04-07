@@ -27,64 +27,64 @@ func NewQueue(size int) *Queue {
 }
 
 //Enqueue - Add an element to the end of the queue.
-func (Q *Queue) Enqueue(key interface{}) error {
-	if Q.size == Q.len {
+func (q *Queue) Enqueue(key interface{}) error {
+	if q.size == q.len {
 		return fmt.Errorf("the queue is full")
 	}
-	if !Q.IsEmpty() && reflect.TypeOf(Q.tail.key) != reflect.TypeOf(key) {
+	if !q.IsEmpty() && reflect.TypeOf(q.tail.key) != reflect.TypeOf(key) {
 		return fmt.Errorf("wrong type: %v", key)
 	}
 	node := &Node{
-		next: Q.tail,
+		next: q.tail,
 		key:  key,
 	}
-	Q.tail = node
-	element := Q.tail
+	q.tail = node
+	element := q.tail
 	for element.next != nil {
 		element = element.next
 	}
-	Q.head = element
-	Q.len++
+	q.head = element
+	q.len++
 	return nil
 }
 
 //Dequeue - Remove an element from the front of the queue.
-func (Q *Queue) Dequeue() error {
-	if Q.IsEmpty() {
+func (q *Queue) Dequeue() error {
+	if q.IsEmpty() {
 		return fmt.Errorf("the queue is empty")
 	}
-	element := Q.tail
-	for i := 0; i < Q.len-2; i++ {
+	element := q.tail
+	for i := 0; i < q.len-2; i++ {
 		element = element.next
 	}
-	Q.head = element
-	Q.head.next = nil
-	Q.len--
+	q.head = element
+	q.head.next = nil
+	q.len--
 	return nil
 }
 
 //IsEmpty - Check if the queue is empty.
-func (Q *Queue) IsEmpty() bool {
-	return Q.len == 0
+func (q *Queue) IsEmpty() bool {
+	return q.len == 0
 }
 
 //IsFull - Check if the queue is full.
-func (Q *Queue) IsFull() bool {
-	return Q.size <= Q.len
+func (q *Queue) IsFull() bool {
+	return q.size <= q.len
 }
 
 //Peek - Get the value of the front of the queue without removing it.
-func (Q *Queue) Peek() (interface{}, error) {
-	if Q.IsEmpty() {
+func (q *Queue) Peek() (interface{}, error) {
+	if q.IsEmpty() {
 		return nil, fmt.Errorf("the queue is empty")
 	}
-	return Q.head.key, nil
+	return q.head.key, nil
 }
 
 //Sort - method sorts data.
-func (Q *Queue) Sort() {
-	for i := 0; i < Q.len; i++ {
-		element := Q.tail
+func (q *Queue) Sort() {
+	for i := 0; i < q.len; i++ {
+		element := q.tail
 		for element.next != nil {
 			if fmt.Sprint(element.key) > fmt.Sprint(element.next.key) {
 				element.key, element.next.key = element.next.key, element.key
