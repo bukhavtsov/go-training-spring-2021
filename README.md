@@ -8,6 +8,7 @@
 - [Lesson 2](lesson_2)
 - [Lesson 3](lesson_3)
 - [Lesson 4](lesson_4)
+- [Lesson 5](lesson_5)
 
 ### Tasks
 
