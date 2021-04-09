@@ -29,6 +29,8 @@ Methods:
 It can be any sorting algorithm (including bubble sort)
 
 
+### 4. Add unit tests
+
 ### You should complete task by following steps:
 
 1. make fork of this repo
