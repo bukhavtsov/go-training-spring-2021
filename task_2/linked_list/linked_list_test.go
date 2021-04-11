@@ -2,9 +2,10 @@ package linked_list
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestList_IsEmpty(t *testing.T) {

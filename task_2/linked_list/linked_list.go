@@ -18,7 +18,7 @@ type List struct {
 	len  int
 }
 
-//isEmpty this function determines whether the LinkedList is empty.
+//IsEmpty this function determines whether the LinkedList is empty.
 func (l *List) IsEmpty() bool {
 	return l.len == 0
 }
