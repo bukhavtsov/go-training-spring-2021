@@ -1,0 +1,91 @@
+-- Example shows how to create database from scratch by @kortelyov
+
+-- auto service
+
+-- work (заказы)
+
+create table accounts (
+    id primary key not null,
+    first_name varchar(255) not null,
+    last_name varchar(255) not null,
+    phone_number varchar(50) not null,
+    -- юридическая информация
+);
+create table locations (
+     id primary key not null,
+     account_id int not null, --fk
+     address varchar(255) not null,
+     phone_number varchar(255) not null,
+);
+create table roles ( --sales, manager, mechanic, guard, director, janitor
+                       id primary key not null,
+                       name varchar(255) not null,
+);
+create table users (
+                       id primary key not null,
+                       account_id int not null, --fk
+                       first_name varchar(255) not null,
+                       last_name varchar(255) not null,
+                       middle_name varchar(255) not null,
+                       role_id int not null, --fk
+                       location_id int not null, --fk
+                       phone_number varchar(255) not null,
+);
+create table parts ( -- brand, model, years
+                       id primary key not null,
+                       name varchar(255) not null,
+);
+create table services ( -- переобувка, замена масла
+    id primary key not null,
+    name varchar(255) not null,
+);
+create table services_cost (
+         id primary key not null,
+         service_id int not null,
+         location_id int not null,
+         cost int not null,
+);
+create table cars (
+                      id primary key not null,
+                      account_id int not null, --fk
+                      license_plate1 varchar(255) not null,
+                      license_plate2 varchar(255),
+                      owner varchar(255) not null, -- ?? owners
+                      vin varchar(255) not null, -- unique
+                      updated_at timestamp not null, -- time.Now()
+                      mileage int, -- ??
+);
+create table clients (
+                         id primary key not null,
+                         account_id int not null, --fk
+                         full_name varchar(255),
+                         phone_number varchar(255),
+);
+-- create table clients_cars (
+--     id primary key not null,
+--     client_id int not null, --fk
+--     car_id int not null, --fk
+-- );
+create table deals (
+                       id primary key not null,
+                       location_id int not null,
+                       created_at timestamp not null,
+                       updated_at timestamp not null,
+                       closed_at timestamp,
+                       client_id int, -- ?
+                       car_id int,
+                       comment varchar(255), -- то, что сказал починить клиент // залить масло, поменять фильтры, приделать колесо
+                       take_car int, --fk user_id (users)
+                       give_car int, --fk user_id (users)
+);
+create table deals_services (
+          id primary key not null,
+          deal_id int not null,
+          service_id int not null,
+          user_id int not null,
+);
+create table deals_parts (
+       id primary key not null,
+       deal_id int not null,
+       part_id int not null,
+);

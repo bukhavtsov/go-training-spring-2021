@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-gorm/pkg/data"
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-gorm/pkg/db"
+	"github.com/bukhavtsov/go-training-spring-2021/lesson_8/users-no-orm/pkg/data"
+	"github.com/bukhavtsov/museum/back-end/db"
 )
 
 var (
@@ -39,6 +38,7 @@ func init() {
 	}
 }
 
+
 func main() {
 	conn, err := db.GetConnection(host, port, user, dbname, password, sslmode)
 	if err != nil {
@@ -46,18 +46,16 @@ func main() {
 	}
 	userData := data.NewUserData(conn)
 	user := data.User{
-		Name:    "Tom",
-		Surname: "Harvard",
+		Name:    "Jacobe",
+		Surname: "Morts",
 	}
-
-	id, err := userData.Add(user)
+	err = userData.Add(user)
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Println("Inserted user id is:", id)
 	users, err := userData.ReadAll()
 	if err != nil {
-		log.Println(err)
+		log.Fatalf("got an error when tried to call ReadAll method: %v", err)
 	}
 	log.Println(users)
 }
