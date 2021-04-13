@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-gorm/db"
 	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-gorm/pkg/data"
+	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-gorm/pkg/db"
 )
 
 var (
