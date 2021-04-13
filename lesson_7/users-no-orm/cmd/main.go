@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-no-orm/pkg/data"
 	"log"
 	"os"
 
+	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-no-orm/pkg/data"
 	"github.com/bukhavtsov/museum/back-end/db"
 )
 
