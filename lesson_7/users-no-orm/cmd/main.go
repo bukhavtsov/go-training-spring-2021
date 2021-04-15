@@ -1,11 +1,11 @@
 package main
 
 import (
+	"go-training-spring-2021/lesson_7/users-no-orm/pkg/data"
+	"go-training-spring-2021/lesson_7/users-no-orm/pkg/db"
+
 	"log"
 	"os"
-
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_7/users-no-orm/pkg/data"
-	"github.com/bukhavtsov/museum/back-end/db"
 )
 
 var (
@@ -37,7 +37,6 @@ func init() {
 		sslmode = "disable"
 	}
 }
-
 
 func main() {
 	conn, err := db.GetConnection(host, port, user, dbname, password, sslmode)
