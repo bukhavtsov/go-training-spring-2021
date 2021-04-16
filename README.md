@@ -12,6 +12,7 @@
 - [Lesson 6](lesson_6)
 - [Lesson 7](lesson_7)
 - [Lesson 8](lesson_8)
+- [Lesson 9](lesson_9)
 
 ### Tasks
 
