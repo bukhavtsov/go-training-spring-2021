@@ -13,6 +13,8 @@
 - [Lesson 7](lesson_7)
 - [Lesson 8](lesson_8)
 - [Lesson 9](lesson_9)
+- [Lesson 9](lesson_10)
+- [Lesson 11](lesson_11)
 
 ### Tasks
 
@@ -20,3 +22,4 @@
 - [Task 2](task_2)
 - [Task 3](task_3)
 - [Task 4](task_4)
+- [Task 4](task_5)

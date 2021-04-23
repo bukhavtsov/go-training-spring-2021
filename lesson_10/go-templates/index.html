@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Go templates</title>
+</head>
+<body>
+<div>
+    <h1>{{ .Title }}</h1>
+    <ul>
+        {{range .Users}}
+        <li>
+            <div>name: {{ .Name }}</div>
+            <div>age: {{ .Age }}</div>
+        </li>
+    </ul>
+    {{end}}
+</div>
+
+</body>
+</html>
