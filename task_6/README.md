@@ -4,7 +4,7 @@
 
 Migrating from the REST approach to gRPC + Gateway.
 
-1. Take code with the latest changes from [Task 5](../task_5).
+1. Take code with the latest changes from [Task 4](../task_4).
 2. Create a new repo with the same name as a previous and add `-grpc` postfix(Example: `golang-training-theater-grpc`).  
 3. Create proto files for your models and services with required methods from your previous implementation (CRUD).
 4. Generate grpc and gateway from the proto files.
