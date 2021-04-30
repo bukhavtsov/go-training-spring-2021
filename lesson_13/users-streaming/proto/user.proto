@@ -1,0 +1,21 @@
+// you can generate go models by the following command:
+// protoc -I . user.proto --go_out=plugins=grpc:.
+
+syntax = "proto3";
+
+option go_package = "/go_proto";
+
+package user;
+
+service UserService {
+  rpc HelloUser(stream HelloRequest) returns (stream HelloResponse) {}
+}
+
+message HelloRequest {
+  string userName = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}
+

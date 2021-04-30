@@ -4,8 +4,8 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/bukhavtsov/go-training-spring-2021/lesson_12/users/proto/go_proto"
-	"github.com/bukhavtsov/go-training-spring-2021/lesson_12/users/user_server/pkg/api"
+	pb "github.com/bukhavtsov/go-training-spring-2021/lesson_13/users/proto/go_proto"
+	"github.com/bukhavtsov/go-training-spring-2021/lesson_13/users/user_server/pkg/api"
 
 	"google.golang.org/grpc"
 

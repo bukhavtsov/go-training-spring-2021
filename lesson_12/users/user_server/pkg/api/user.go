@@ -3,8 +3,9 @@ package api
 import (
 	"context"
 	"fmt"
-	pb "github.com/bukhavtsov/go-training-spring-2021/lesson_12/users/proto/go_proto"
 	"log"
+
+	pb "github.com/bukhavtsov/go-training-spring-2021/lesson_12/users/proto/go_proto"
 )
 
 type UserServer struct{}

@@ -16,6 +16,7 @@
 - [Lesson 10](lesson_10)
 - [Lesson 11](lesson_11)
 - [Lesson 12](lesson_12)
+- [Lesson 13](lesson_13)
 
 ### Tasks
 
@@ -24,3 +25,5 @@
 - [Task 3](task_3)
 - [Task 4](task_4)
 - [Task 5](task_5)
+- [Task 6](task_6)
+
